@@ -1,0 +1,1 @@
+Simply my dwm rice
