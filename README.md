@@ -1,6 +1,6 @@
-#My dwm rice
+# My dwm rice
 
-##Installation instructions
+## Installation instructions
 
 Clone the repo and move to the directory:
 ```bash
@@ -20,9 +20,15 @@ cd dwmblocks
 sudo make clean install
 ```
 
-##Look and feel:
+## Look and feel:
 This dwm rice supports most of the highly popular layouts, including: tile, bstack, bstackhoriz, centeredmaster, centeredfloatingmaster, deck, fibonacci (dwindle, spiral), grid, nrowgrid.
-It also supports gap management from vanitygaps, in fact, this project is nothing but a customized and slightly modified patch from the *vanitygaps* project, which you can patch by yourself from: https://dwm.suckless.org/patches/vanitygaps/.
+
+![image](https://user-images.githubusercontent.com/43280129/144339050-1769adf6-3295-45b0-a5e9-d522508e706d.png)
+
+![image](https://user-images.githubusercontent.com/43280129/144339454-18957a21-5498-47fe-97b8-3e5d571c8da7.png)
+
+
+It also supports gap dynamical management from vanitygaps, in fact, this project is nothing but a customized and slightly modified patch from the *vanitygaps* project, which you can patch by yourself from: https://dwm.suckless.org/patches/vanitygaps/.
 
 This project also uses dwmblocks for bar management, by modifying the xsetroot -name <Literally any UTF-8 text you want> directly and ellegantly. Any configuration for this feature can be done in the dwm/dwmblocks/blocks.h file, and all scrips for getting date, system resources, kernel, packages, etc, where disposed in the dwm/dwmblocks/scripts/ directory. This bar feature was originally developed in: https://github.com/torrinfail/dwmblocks
 
