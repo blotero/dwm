@@ -1,0 +1,12 @@
+#!/bin/sh
+
+screen=$(xrandr | head -2 | tail -1 | awk {'print $1'})
+actual_state=$(xrandr | head -2 | tail -1 | awk {'print $5'})
+
+if [ "$actual_state" = "inverted" ] 
+then
+    xrandr --output $screen --rotation normal
+else
+    xrandr --output $screen --rotation inverted
+fi
+

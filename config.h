@@ -25,8 +25,8 @@ static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows sel
 static const unsigned int systrayspacing = 0;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray             = 1;   /* 0 means no systray */
-static const char *fonts[]               = { "UbuntuMono Nerd Font Mono:size=10" };
-static const char dmenufont[]            = "UbuntuMono Nerd Font Mono:size=10";
+static const char *fonts[]               = { "UbuntuMono Nerd Font Mono:size=12" };
+static const char dmenufont[]            = "UbuntuMono Nerd Font Mono:size=12";
 static const char col_gray1[]            = "#121212";
 static const char col_gray2[]            = "#4444FF";
 static const char col_gray3[]            = "#C169C1"; 
@@ -108,8 +108,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", "-e", "fish" };
 static const char *bloatedtermcmd[]  = { "alacritty", NULL };
-static const char *incbacklight[]  = { "xbacklight", "-inc", "5" };
-static const char *decbacklight[]  = { "xbacklight", "-dec", "5" };
+static const char *incbacklight[]  = { "brightnessctl", "s", "5%+" };
+static const char *decbacklight[]  = { "brightnessctl", "s", "5%-" };
 static const char *incvolume[]  = { "amixer", "set", "Master", "2%+", "unmute" };
 static const char *decvolume[]  = { "amixer", "set", "Master", "2%-", "unmute" };
 static const char *shutdown[]  = { "shutdown", "now"};
@@ -117,13 +117,25 @@ static const char *reboot[]  = { "reboot", "now"};
 static const char *surf[]  = {"alacritty", "-e", "tabbed", "-c", "surf", "-e"};
 static const char *firefox[]  = {"firefox", NULL};
 static const char *thunar[]  = {"thunar", NULL};
-static const char *ranger[]  = {"alacritty", "-e", "ranger"};
+static const char *ranger[]  = {"alacritty", "-e", "fish", "-c", "ranger"};
 static const char *cpupower[]  = {"cpupower-gui", NULL};
 static const char *pavucontrol[]  = {"pavucontrol", NULL};
 static const char *setkeyspeed[]  = {"xset", "r", "rate", "200", "50"};
 static const char *simplescreenshot[]  = {"gscreenshot", "-c", NULL};
 static const char *screenshotselection[]  = {"gscreenshot", "-s", "-c"};
 static const char *screenshotgui[]  = {"gscreenshot", NULL};
+static const char *netbeans8[]  = {"netbeans8", NULL};
+static const char *netbeans11[]  = {"netbeans11", NULL};
+static const char *gitahead[]  = {"gitahead", NULL};
+static const char *mysqlworkbench[]  = {"mysql-workbench", NULL};
+static const char *postman[]  = {"postman", NULL};
+static const char *anydesk[]  = {"anydesk", NULL};
+static const char *passmenu[]  = {"passmenu", NULL};
+static const char *todo[]  = {"alacritty", "-e", "nvim", "/home/noatec/minitodo", NULL};
+static const char *clipmenu[]  = {"clipmenu", NULL};
+static const char *togglescreenrotation[]  = {"togglescreenrotation", NULL};
+static const char *filezilla[]  = {"filezilla", NULL};
+static const char *eclipse[]  = {"eclipse", NULL};
 
 
 static Key keys[] = {
@@ -192,8 +204,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,          {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_comma,  cyclelayout,       {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,       {.i = +1 } },
-	{ MODKEY|Mod1Mask,              XK_comma,  tagmon,            {.i = +1 } },
-	{ MODKEY|Mod1Mask,              XK_period, tagmon,            {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,            {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_period, tagmon,            {.i = -1 } },
 	{ MODKEY|Mod1Mask|ShiftMask,    XK_comma,  tagallmon,         {.i = +1 } },
 	{ MODKEY|Mod1Mask|ShiftMask,    XK_period, tagallmon,         {.i = -1 } },
 	{ MODKEY|Mod1Mask|ControlMask,  XK_comma,  tagswapmon,        {.i = +1 } },
@@ -233,18 +245,32 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = incvolume } },
 	{ 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = decvolume } },
 	//*****************MY PROGRAMS****************************//
-        { MODKEY,                       XK_s,                       spawn,          {.v = surf } },
-        { MODKEY|ControlMask,           XK_b,                       spawn,          {.v = firefox } },
-        { MODKEY|ControlMask|ShiftMask, XK_x,                       spawn,          {.v = shutdown } },
-        { MODKEY|ControlMask|ShiftMask, XK_r,                       spawn,          {.v = reboot } },
-        { MODKEY|ControlMask,           XK_f,                       spawn,          {.v = thunar } },
-        { MODKEY|ShiftMask,             XK_f,                       spawn,          {.v = ranger } },
-        { MODKEY,                       XK_c,                       spawn,          {.v = cpupower } },
-        { MODKEY,                       XK_v,                       spawn,          {.v = pavucontrol } },
-        { MODKEY,                       XK_z,                       spawn,          {.v = setkeyspeed } },
-        { 0,                            XK_Print,                   spawn,          {.v = simplescreenshot } },
-        { ControlMask|ShiftMask,        XK_Print,                   spawn,          {.v = screenshotselection } },
-        { ShiftMask,                    XK_Print,                   spawn,          {.v = screenshotgui } },
+        { MODKEY,			    XK_s,                       spawn,          {.v = surf } },
+        { MODKEY|ControlMask,		    XK_b,                       spawn,          {.v = firefox } },
+	{ Mod1Mask|ControlMask,		    XK_b,                       spawn,          {.v = firefox } },
+        { MODKEY|ControlMask|ShiftMask,	    XK_x,                       spawn,          {.v = shutdown } },
+        { MODKEY|ControlMask|ShiftMask,	    XK_r,                       spawn,          {.v = reboot } },
+        { MODKEY|ControlMask,		    XK_f,                       spawn,          {.v = thunar } },
+        { MODKEY|ShiftMask,		    XK_f,                       spawn,          {.v = ranger } },
+        { MODKEY,			    XK_c,                       spawn,          {.v = cpupower } },
+        { MODKEY,			    XK_v,                       spawn,          {.v = pavucontrol } },
+        { MODKEY,			    XK_z,                       spawn,          {.v = setkeyspeed } },
+        { 0,				    XK_Print,                   spawn,          {.v = simplescreenshot } },
+        { ControlMask|ShiftMask,	    XK_Print,                   spawn,          {.v = screenshotselection } },
+        { ShiftMask,			    XK_Print,                   spawn,          {.v = screenshotgui } },
+	{ Mod1Mask|ControlMask,		    XK_n,                       spawn,          {.v = netbeans8 } },
+	{ Mod1Mask|ControlMask|ShiftMask,   XK_n,                       spawn,          {.v = netbeans11 } },
+	{ Mod1Mask|ControlMask,		    XK_g,                       spawn,          {.v = gitahead } },
+	{ Mod1Mask|ControlMask,		    XK_m,                       spawn,          {.v = mysqlworkbench } },
+	{ Mod1Mask|ControlMask,		    XK_p,                       spawn,          {.v = postman } },
+	{ Mod1Mask|ControlMask,		    XK_a,                       spawn,          {.v = anydesk } },
+	{ Mod1Mask|ControlMask,		    XK_k,                       spawn,          {.v = passmenu } },
+	{ Mod1Mask|ControlMask,		    XK_t,                       spawn,          {.v = todo } },
+	{ Mod1Mask|ControlMask,		    XK_c,                       spawn,          {.v = clipmenu } },
+	{ MODKEY|ShiftMask,		    XK_r,                       spawn,          {.v = togglescreenrotation} },
+	{ Mod1Mask|ControlMask,		    XK_f,                       spawn,          {.v = filezilla} },
+	{ Mod1Mask|ControlMask,		    XK_e,                       spawn,          {.v = eclipse} },
+
 };
 
 
