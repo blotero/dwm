@@ -35,6 +35,27 @@ This project also uses dwmblocks for bar management, by modifying the xsetroot -
 Learn to hack your own patches on your dwm rice following suckless' oficial guidlines: https://suckless.org/hacking/
 This rice, though powerful, tries to keep minimal and *suckless like*, therefore, it doesn't have clicky support for the top bar, however, if you want to, you can take a look to all available popular patches for dwm on: https://dwm.suckless.org/patches/
 
+## Configuration
+
+
+### Disk size monitor
+
+Your dwmblocks bar will display several interestvariables from your system. It will verify by default the size on your partition /dev/sda3, however, if you want to change this value, simply modify file in ```~/dwm/dwmblocks/scripts/disk.sh``` as follows:
+
+```bash
+#!/bin/sh
+
+available=$(df -h /dev/sda3 | tail -1 | awk '{print $ 4}')
+used=$(df -h /dev/sda3 | tail -1 | awk '{print $ 5}')
+
+echo $available 
+
+```
+
+In the final echo command, you might choose to deliver your desired information. By default, only available space is printed.
+
+
+
 ## Patches used:
 Vanitygaps:
 
@@ -42,4 +63,7 @@ Vanitygaps:
 ##Follow the original project:
 Dynamic window manager official website from suckless: https://dwm.suckless.org/
 Raw dwm source repository: https://git.suckless.org/
+
+
+
 
