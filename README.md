@@ -54,13 +54,21 @@ echo $available
 
 In the final echo command, you might choose to deliver your desired information. By default, only available space is printed.
 
+### System volume
+
+System volume is displayed through the amixer tool, therefore, it is a dependency for correct work of the top bar. Feel free to choose whatever audio system client tool you want and parse it as needed in file ```~/dwm/dwmblocks/scripts/volume.sh```.
+
+### Additional configuration
+
+All other hackeable features related with keyboard shortcuts, layout management and behaviour, etc, can be configured in the same exact way as the original suckless dwm project. Documentation is available at: https://dwm.suckless.org/customisation/. 
+
 
 
 ## Patches used:
 Vanitygaps:
 
 
-##Follow the original project:
+## Follow the original project:
 Dynamic window manager official website from suckless: https://dwm.suckless.org/
 Raw dwm source repository: https://git.suckless.org/
 
