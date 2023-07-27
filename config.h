@@ -121,9 +121,9 @@ static const char *ranger[]  = {"alacritty", "-e", "fish", "-c", "ranger"};
 static const char *cpupower[]  = {"cpupower-gui", NULL};
 static const char *pavucontrol[]  = {"pavucontrol", NULL};
 static const char *setkeyspeed[]  = {"xset", "r", "rate", "200", "50"};
-static const char *simplescreenshot[]  = {"gscreenshot", "-c", NULL};
-static const char *screenshotselection[]  = {"gscreenshot", "-s", "-c"};
-static const char *screenshotgui[]  = {"gscreenshot", NULL};
+static const char *simplescreenshot[]  = {"xfce4-screenshooter", "-c", NULL};
+static const char *screenshotselection[]  = {"xfce4-screenshooter", "-r", "-c"};
+static const char *screenshotgui[]  = {"xfce4-screenshooter", NULL};
 static const char *netbeans8[]  = {"netbeans8", NULL};
 static const char *netbeans11[]  = {"netbeans11", NULL};
 static const char *gitahead[]  = {"gitahead", NULL};
@@ -136,6 +136,8 @@ static const char *clipmenu[]  = {"clipmenu", NULL};
 static const char *togglescreenrotation[]  = {"togglescreenrotation", NULL};
 static const char *filezilla[]  = {"filezilla", NULL};
 static const char *eclipse[]  = {"eclipse", NULL};
+static const char *latam_keyboard[]  = {"setxkbmap", "latam", NULL};
+static const char *us_keyboard[]  = {"setxkbmap", "us", NULL};
 
 
 static Key keys[] = {
@@ -270,6 +272,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		    XK_r,                       spawn,          {.v = togglescreenrotation} },
 	{ Mod1Mask|ControlMask,		    XK_f,                       spawn,          {.v = filezilla} },
 	{ Mod1Mask|ControlMask,		    XK_e,                       spawn,          {.v = eclipse} },
+	{ Mod1Mask|ControlMask|ShiftMask,   XK_l,                       spawn,          {.v = latam_keyboard} },
+	{ Mod1Mask|ControlMask|ShiftMask,   XK_u,                       spawn,          {.v = us_keyboard} },
 
 };
 
