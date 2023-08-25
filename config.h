@@ -58,7 +58,7 @@ static const Rule rules[] = {
 	 */
 	/* class            role                          instance     title   tags mask  switchtag  iscentered   isfloating   monitor */
 	{ "Gimp",           NULL,                         NULL,        NULL,   1 << 4,    1,         0,           1,           -1 },
-	{ "Firefox",        NULL,                         NULL,        NULL,   1 << 7,    1,         0,           0,           -1 },
+	//{ "Firefox",        NULL,                         NULL,        NULL,   1 << 7,    1,         0,           0,           -1 },
 };
 
 /* layout(s) */
@@ -131,13 +131,14 @@ static const char *mysqlworkbench[]  = {"mysql-workbench", NULL};
 static const char *postman[]  = {"postman", NULL};
 static const char *anydesk[]  = {"anydesk", NULL};
 static const char *passmenu[]  = {"passmenu", NULL};
-static const char *todo[]  = {"alacritty", "-e", "nvim", "/home/noatec/minitodo", NULL};
+static const char *todo[]  = {"alacritty", "-e", "nvim", "~/minitodo", NULL};
 static const char *clipmenu[]  = {"clipmenu", NULL};
 static const char *togglescreenrotation[]  = {"togglescreenrotation", NULL};
 static const char *filezilla[]  = {"filezilla", NULL};
 static const char *eclipse[]  = {"eclipse", NULL};
 static const char *latam_keyboard[]  = {"setxkbmap", "latam", NULL};
 static const char *us_keyboard[]  = {"setxkbmap", "us", NULL};
+static const char *dev_env[]  = {"devenv", NULL};
 
 
 static Key keys[] = {
@@ -238,10 +239,10 @@ static Key keys[] = {
 	//*****************MY KEY BINDINGS****************************//
 	///* modifier                     key                         function        argument */
 
-	{ MODKEY|ShiftMask,             XK_plus,                    spawn,          {.v = incbacklight } },
-	{ MODKEY|ShiftMask,             XK_minus,                   spawn,          {.v = decbacklight } },
-	{ MODKEY|ControlMask,           XK_plus,                    spawn,          {.v = incvolume } },
-        { MODKEY|ControlMask,           XK_minus,                   spawn,          {.v = decvolume } },
+	{ MODKEY|ShiftMask,             XK_p,                       spawn,          {.v = incbacklight } },
+	{ MODKEY|ShiftMask,             XK_m,                       spawn,          {.v = decbacklight } },
+	{ MODKEY|ControlMask,           XK_p,                       spawn,          {.v = incvolume } },
+        { MODKEY|ControlMask,           XK_m,                       spawn,          {.v = decvolume } },
         { 0,                            XF86XK_MonBrightnessUp,     spawn,          {.v = incbacklight } },
 	{ 0,                            XF86XK_MonBrightnessDown,   spawn,          {.v = decbacklight } },
 	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = incvolume } },
@@ -274,6 +275,7 @@ static Key keys[] = {
 	{ Mod1Mask|ControlMask,		    XK_e,                       spawn,          {.v = eclipse} },
 	{ Mod1Mask|ControlMask|ShiftMask,   XK_l,                       spawn,          {.v = latam_keyboard} },
 	{ Mod1Mask|ControlMask|ShiftMask,   XK_u,                       spawn,          {.v = us_keyboard} },
+	{ MODKEY|ControlMask,               XK_d,                       spawn,          {.v = dev_env} },
 
 };
 

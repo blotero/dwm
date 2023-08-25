@@ -11,6 +11,7 @@ static const Block blocks[] = {
 	{"💿" ,          "~/dwm/dwmblocks/scripts/disk.sh",                                  	100,		0},
 	{"",             "~/dwm/dwmblocks/scripts/kernel.sh",                                  	100,		0},
 	{"",             "date '+%b %d (%a) %I:%M%p'",        					10,		0},
+	{"⌨️",            "~/dwm/dwmblocks/scripts/xkey.sh",     				10,		0},
 };
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.
